@@ -1,53 +1,66 @@
 #include "SortingAlgos.h"
 
-void merge(int List[],int const left,int const right, int const mid){
-    int const SubList1 = mid - left + 1;
-    int const SubList2 = right - mid; 
-    int *leftList = new int[SubList1],
-         *rightList = new int[SubList2];
-    for (int i = 0; i < SubList1; i++)
-        leftList[i] = List[left + i];
-    for (int j = 0; j < SubList2; j++)
-        rightList[j] = List[mid + 1 + j];
-    int indSubList1 = 0, indSubList2 = 0;
-    int indOfMergedList = left;
-    while (indSubList1 < SubList1 && indSubList2 < SubList2) {
-        if (leftList[indSubList1]
-            <= rightList[indSubList2]) {
-            List[indOfMergedList]
-                = leftList[indSubList1];
-            indSubList1++;
+void merge(int arr[], int l, int m, int r)
+{
+    int n1 = m - l + 1;
+    int n2 = r - m;
+ 
+ 
+    int L[n1], R[n2];
+ 
+   
+    for (int i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+    for (int j = 0; j < n2; j++)
+        R[j] = arr[m + 1 + j];
+
+ 
+    int i = 0;
+ 
+    
+    int j = 0;
+ 
+    
+    int k = l;
+ 
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
         }
         else {
-            List[indOfMergedList]
-                = rightList[indSubList2];
-            indSubList2++;
+            arr[k] = R[j];
+            j++;
         }
-        indOfMergedList++;
+        k++;
     }
-    while (indSubList1 < SubList1) {
-        List[indOfMergedList]
-            = leftList[indSubList1];
-        indSubList1++;
-        indOfMergedList
-        ++;
+ 
+  
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
     }
-    while (indSubList2 < SubList2) {
-        List[indOfMergedList]
-            = rightList[indSubList2];
-        indSubList2++;
-        indOfMergedList++;
+ 
+   
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
     }
-    delete[] leftList;
-    delete[] rightList;
+}
+ 
+
+void mergeSort(int arr[],int l,int r){
+    if(l>=r){
+        return;
+    }
+    int m = (l+r-1)/2;
+    mergeSort(arr,l,m);
+    mergeSort(arr,m+1,r);
+    merge(arr,l,m,r);
 }
 
-void mergeSort(int List[], int const begin, int const end)
-{
-    if (begin >= end)
-        return;
-    int mid = begin + (end - begin) / 2;
-    mergeSort(List, begin, mid);
-    mergeSort(List, mid + 1, end);
-    merge(List, begin, mid, end);
+void mergeSortw(int List[], int size){
+    mergeSort(List,0,size-1);
 }

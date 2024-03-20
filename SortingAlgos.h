@@ -8,5 +8,6 @@ using namespace std;
 void selectionSort(int List[], int size);
 void insertionSort(int List[], int size);
 void quickSort(int List[], int low,int high);
-void mergeSort(int array[], int const begin, int const end);
+void mergeSortw(int List[], int size);
+void hybridSort(int List[],int size);
 #endif

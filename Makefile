@@ -2,10 +2,10 @@
 CXX = g++
 
 # Compiler flags
-CXXFLAGS = -Wall -std=c++11
+CXXFLAGS = -Wall -std=c++11 -O2
 
 # Source files
-SOURCES = sort.cpp Insertion.cpp mergeSort.cpp quickSort.cpp Selectoin.cpp 
+SOURCES = sort.cpp Insertion.cpp mergeSort.cpp quickSort.cpp Selection.cpp 
 
 # Object files
 OBJECTS = $(SOURCES:.cpp=.o)
@@ -22,6 +22,6 @@ $(EXECUTABLE): $(OBJECTS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJECTS) $(EXECUTABLE) s*.txt
+	rm -f $(OBJECTS) $(EXECUTABLE) 
 
 

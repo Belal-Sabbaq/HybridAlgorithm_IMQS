@@ -1,5 +1,4 @@
 #include "SortingAlgos.h"
-
 void selectionSort(int List[], int size){
     int i, j, min,temp;
     for(i = 0; i < size - 1; i++){
@@ -9,10 +8,8 @@ void selectionSort(int List[], int size){
                 min = j;
             }
         }
-        if (min != i){
             temp = List[i];
             List[i] = List[min];
             List[min] = temp;
-        }
     } 
 }
